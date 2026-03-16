@@ -34,9 +34,37 @@ Aplikasi ini dibangun menggunakan berbagai widget inti Flutter untuk memastikan 
 ---
 
 ##  Dokumentasi Alur
+### 1. Autentikasi Pengguna (Register & Login)
+Sebelum masuk ke aplikasi, pengguna diwajibkan memiliki akun. 
+* **Register:** Pengguna mendaftarkan email dan password yang akan disimpan secara aman di **Supabase Auth**.
+* **Login:** Pengguna masuk menggunakan kredensial yang telah didaftarkan. Aplikasi menggunakan session sehingga pengguna tidak perlu login berulang kali.
 
+### 2. Halaman Utama (Dashboard)
+Setelah login berhasil, pengguna diarahkan ke Halaman Utama yang memiliki dua navigasi:
+* **Tab Koleksi:** Menampilkan seluruh daftar tanaman yang telah tersimpan di cloud.
+* **Tab Tugas Siram:** Menampilkan daftar tanaman yang jadwal penyiramannya jatuh pada hari ini (berdasarkan hari di sistem perangkat).
+
+### 3. Tambah Data Tanaman (Create)
+Pengguna menekan tombol **+** di pojok kanan bawah untuk membuka formulir. 
+* Input yang tersedia: Nama Tanaman, Spesies, dan pilihan Hari Siram.
+* Data dikirim ke tabel `plants` di Supabase dan secara otomatis muncul di list utama.
+
+### 4. Mengubah Data Tanaman (Update)
+Jika ada kesalahan input atau perubahan jadwal:
+* Pengguna menekan tombol **Edit (Ikon Pensil)** pada kartu tanaman.
+* Form akan terbuka kembali dengan data lama yang sudah terisi otomatis.
+* Setelah diedit dan disimpan, data di database akan diperbarui secara real-time.
+
+### 5. Menghapus Data Tanaman (Delete)
+Untuk menjaga keamanan data dari klik yang tidak sengaja:
+* Pengguna menekan tombol **Hapus (Ikon Tong Sampah)**.
+* Muncul **Pop-up Dialog** konfirmasi. 
+* Jika dikonfirmasi, data dihapus dari Supabase dan daftar di aplikasi langsung terupdate secara otomatis.
+
+### 6. Keluar (Logout)
+Pengguna dapat keluar dari akun melalui ikon logout di AppBar. Ini akan menghapus session login dan mengarahkan kembali pengguna ke halaman Login.
 <div align="center">
-  <img width="250" alt="Halaman Utama" src="https://github.com/user-attachments/assets/bb58223a-122c-4646-91ca-e59b942d64d9" />
+  <img width="285" height="628" alt="image" src="https://github.com/user-attachments/assets/307bb5c4-34fb-4a73-b975-d626683e4bf6" />
   <p><i>Tampilan Tab Koleksi dan Tab Tugas Siram</i></p>
 </div>
 
